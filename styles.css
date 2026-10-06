@@ -6,6 +6,7 @@
             --card-bg: #ffffff;
             --text-color: #334155;
             --border-color: #cbd5e1;
+            --error-color: #dc2626;
         }
 
         body {
@@ -46,30 +47,37 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
         }
 
-        input[type="number"], select {
+        input[type="text"], input[type="email"], input[type="number"], select {
             width: 100%;
-            padding: 12px;
+            padding: 10px 12px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             box-sizing: border-box;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        input[type="number"]:focus, select:focus {
+        input:focus, select:focus {
             outline: none;
             border-color: var(--accent-color);
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 4px;
+            display: none;
         }
 
         button {
