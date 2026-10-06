@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Facturación - ALQUIPC</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Empresa Alquipc</h1>
+        <div class="subtitle">Sistema de Facturación Digital</div>
+
+        <form id="billingForm">
+            <div class="form-group">
+                <label for="cantidadEquipos">Número de equipos a alquilar (Mínimo 2):</label>
+                <input type="number" id="cantidadEquipos" min="2" required placeholder="Ej. 3">
+            </div>
+
+            <div class="form-group">
+                <label for="diasIniciales">Días iniciales de alquiler:</label>
+                <input type="number" id="diasIniciales" min="1" required placeholder="Ej. 5">
+            </div>
+
+            <div class="form-group">
+                <label for="diasAdicionales">Días adicionales (0 si no hay):</label>
+                <input type="number" id="diasAdicionales" min="0" value="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="opcionUbicacion">Opción de ubicación:</label>
+                <select id="opcionUbicacion" required>
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option value="1">1. Dentro de la ciudad</option>
+                    <option value="2">2. Fuera de la ciudad (Incremento del 5% por domicilio)</option>
+                    <option value="3">3. Dentro del establecimiento (Descuento del 5%)</option>
+                </select>
+            </div>
+
+            <button type="submit">Calcular Factura</button>
+        </form>
+
+        <div class="invoice" id="invoiceSection">
+            <h2>Comprobante Digital - ALQUIPC</h2>
+            <div class="invoice-row"><span>ID del Cliente:</span> <span id="resCliente"></span></div>
+            <div class="invoice-row"><span>Opción de Alquiler:</span> <span id="resUbicacion"></span></div>
+            <div class="invoice-row"><span>Cantidad de Equipos:</span> <span id="resEquipos"></span></div>
+            <div class="invoice-row"><span>Días Iniciales:</span> <span id="resDiasIni"></span></div>
+            <div class="invoice-row"><span>Días Adicionales:</span> <span id="resDiasAd"></span></div>
+            <div class="invoice-row"><span>Total Días Alquilados:</span> <span id="resTotalDias"></span></div>
+            <div class="invoice-row"><span>Subtotal Base:</span> <span id="resSubtotal"></span></div>
+            
+            <div class="invoice-row" id="rowAjuste" style="display: none;">
+                <span id="labelAjuste">Ajuste Ubicación:</span> <span id="resAjuste"></span>
+            </div>
+
+            <div class="invoice-row" id="rowDescuentoAd" style="display: none;">
+                <span id="labelDescAd">Descuento Días Adicionales:</span> <span id="resDescAd"></span>
+            </div>
+
+            <div class="invoice-total">
+                <span>VALOR TOTAL A CANCELAR:</span> <span id="resTotal"></span>
+            </div>
+
+            <div class="invoice-footer">
+                ♻️ Aporte ambiental: Factura generada sin papel.<br>
+                📧 Estado: Factura enviada exitosamente vía e-mail al Cliente
+            </div>
+        </div>
+    </div>
+
+    <SCRipt src="ALQUIPC.JS"></SCRipt>
+</body>
+</html>
