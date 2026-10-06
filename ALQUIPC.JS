@@ -1,4 +1,4 @@
-document.getElementById('billingForm').addEventListener('submit', function(e) {
+ document.getElementById('billingForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
          
