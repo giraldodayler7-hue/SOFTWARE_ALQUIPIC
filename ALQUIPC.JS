@@ -1,19 +1,35 @@
- document.getElementById('billingForm').addEventListener('submit', function(e) {
+document.getElementById('billingForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Capturar valores
+         
+            let nombre = document.getElementById('nombreCliente').value.trim();
+            let apellido = document.getElementById('apellidoCliente').value.trim();
+            let correo = document.getElementById('correoCliente').value.trim();
+            let errorCorreoDiv = document.getElementById('errorCorreo');
+
+           
+            if (!correo.includes('@') || correo.indexOf('@') === 0 || correo.indexOf('@') === correo.length - 1) {
+                errorCorreoDiv.style.display = "block";
+                document.getElementById('correoCliente').style.borderColor = "var(--error-color)";
+                document.getElementById('correoCliente').focus();
+                return; 
+            } else {
+                errorCorreoDiv.style.display = "none";
+                document.getElementById('correoCliente').style.borderColor = "var(--border-color)";
+            }
+
+           
             let cantidad_equipos = parseInt(document.getElementById('cantidadEquipos').value);
             let dias_iniciales = parseInt(document.getElementById('diasIniciales').value);
             let dias_adicionales = parseInt(document.getElementById('diasAdicionales').value);
             let opcion_ubicacion = parseInt(document.getElementById('opcionUbicacion').value);
 
-            // Validaciones lógicas básicas
             if (cantidad_equipos < 2) {
                 alert("El alquiler requiere un mínimo de 2 equipos.");
                 return;
             }
 
-            // Generar ID de cliente aleatorio
+            
             let id_cliente = "CLI-" + Math.floor(1000 + Math.random() * 9000);
 
             // Constantes y cálculos
@@ -40,11 +56,12 @@
 
             let valor_total = subtotal_base + ajuste_ubicacion - descuento_adicionales_valor;
 
-            // Formato de moneda local (COP / formato estándar con comas)
             const formatoMoneda = (valor) => "$" + valor.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-            // Rellenar datos en la interfaz
-            document.getElementById('resCliente').textContent = id_cliente;
+            
+            document.getElementById('resClienteID').textContent = id_cliente;
+            document.getElementById('resNombreCompleto').textContent = `${nombre} ${apellido}`;
+            document.getElementById('resCorreo').textContent = correo;
             document.getElementById('resUbicacion').textContent = nombre_opcion;
             document.getElementById('resEquipos').textContent = cantidad_equipos;
             document.getElementById('resDiasIni').textContent = dias_iniciales;
@@ -52,7 +69,7 @@
             document.getElementById('resTotalDias').textContent = total_dias;
             document.getElementById('resSubtotal').textContent = formatoMoneda(subtotal_base);
 
-            // Manejo de filas condicionales de ajustes
+           
             let rowAjuste = document.getElementById('rowAjuste');
             if (opcion_ubicacion === 2) {
                 rowAjuste.style.display = "flex";
@@ -77,7 +94,7 @@
 
             document.getElementById('resTotal').textContent = formatoMoneda(valor_total);
 
-            // Mostrar la sección del comprobante con animación o despliegue
+           
             document.getElementById('invoiceSection').style.display = "block";
             document.getElementById('invoiceSection').scrollIntoView({ behavior: 'smooth' });
         });
