@@ -14,6 +14,22 @@
 
         <form id="billingForm">
             <div class="form-group">
+                <label for="nombreCliente">Nombre:</label>
+                <input type="text" id="nombreCliente" required placeholder="Ej. Carlos">
+            </div>
+
+            <div class="form-group">
+                <label for="apellidoCliente">Apellido:</label>
+                <input type="text" id="apellidoCliente" required placeholder="Ej. Gómez">
+            </div>
+
+            <div class="form-group">
+                <label for="correoCliente">Correo Electrónico (Obligatorio con @):</label>
+                <input type="email" id="correoCliente" required placeholder="Ej. correo@ejemplo.com">
+                <div id="errorCorreo" class="error-message">Por favor, ingrese un correo válido que contenga el carácter '@'.</div>
+            </div>
+
+            <div class="form-group">
                 <label for="cantidadEquipos">Número de equipos a alquilar (Mínimo 2):</label>
                 <input type="number" id="cantidadEquipos" min="2" required placeholder="Ej. 3">
             </div>
@@ -41,9 +57,12 @@
             <button type="submit">Calcular Factura</button>
         </form>
 
+        
         <div class="invoice" id="invoiceSection">
             <h2>Comprobante Digital - ALQUIPC</h2>
-            <div class="invoice-row"><span>ID del Cliente:</span> <span id="resCliente"></span></div>
+            <div class="invoice-row"><span>ID del Cliente:</span> <span id="resClienteID"></span></div>
+            <div class="invoice-row"><span>Cliente:</span> <span id="resNombreCompleto"></span></div>
+            <div class="invoice-row"><span>Correo Electrónico:</span> <span id="resCorreo"></span></div>
             <div class="invoice-row"><span>Opción de Alquiler:</span> <span id="resUbicacion"></span></div>
             <div class="invoice-row"><span>Cantidad de Equipos:</span> <span id="resEquipos"></span></div>
             <div class="invoice-row"><span>Días Iniciales:</span> <span id="resDiasIni"></span></div>
@@ -65,11 +84,11 @@
 
             <div class="invoice-footer">
                 ♻️ Aporte ambiental: Factura generada sin papel.<br>
-                📧 Estado: Factura enviada exitosamente vía e-mail al Cliente
+                📧 Estado: Factura enviada exitosamente vía e-mail al cliente.
             </div>
         </div>
     </div>
 
-    <SCRipt src="ALQUIPC.JS"></SCRipt>
+    <script src="ALQUIPC.JS"></script>
 </body>
 </html>
